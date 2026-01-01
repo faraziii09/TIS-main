@@ -1,0 +1,135 @@
+.loader, .loader:before, .loader:after {
+  border-radius: 50%;
+  animation-fill-mode: both;
+  animation: bblFadInOut 1.8s infinite ease-in-out;
+}
+
+.loader {
+  position: relative;
+  font-size: 8px;
+  text-indent: -9999em;
+  transform: translateZ(0) translateY(-100%);
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+
+@keyframes bblFadInOut {
+  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
+  40% { box-shadow: 0 2.5em 0 0 }
+}
+    
+
+  .slideDown {
+    animation: fade .5s ease forwards;
+    opacity: 0; 
+  }
+  
+  @keyframes fade{
+    from {
+      transform: translateY(-25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .recipients-update-popup {
+    animation: slideUp .5s ease-in-out forwards; 
+  }
+
+  @keyframes slideUp {
+      to {
+        bottom: 30px;
+      }
+  }
+
+  .fadeIn {
+    animation: fadeIn .5s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; 
+    }
+      100% {
+        opacity: 1;
+      }
+  }
+
+.message-received-float {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  position: fixed;
+  bottom: 6%;
+  right: 36px;
+  z-index: 5000;
+}
+
+.message-received-float.animate {
+  animation: blink 1s;
+}
+
+.message-received-float svg {
+  color: white;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  15%,
+  35%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.slide-down {
+  animation: slideDown 2s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.fade {
+  animation: fade 2s ease forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}

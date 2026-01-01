@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;700&display=swap");
+@import url("./css/animations.css");
+
+:root {
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: #0099fe12;
+}
+
+:root {
+  --primary-color: #006cff;
+}
+
+button:disabled {
+  background: #ddd !important;
+  color: grey !important;
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.border-primary {
+  border-style: solid;
+  border-color: var(--primary-color);
+}
+
+.image-container {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.round-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.greeting-text {
+  display: block;
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
+    0 0 40px var(--color3), 0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+  font-weight: 600;
+  --color1: rgb(131 131 131 / 75%);
+  --color2: rgb(116 116 116 / 53%);
+  --color3: rgb(116 158 220 / 18%);
+  --color4: rgb(185 204 234);
+}
+
+/* Your other styles */
+
+.auth-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 75%;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    width: 80%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .auth-card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .auth-card {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1281px) {
+  .auth-card {
+    width: 35%;
+  }
+}
