@@ -2,26 +2,35 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const JWT_SECRET = process.env.JWT_SECRET;
+  const authorization = req.headers.authorization;
 
-  const { authorization } = req.headers;
-
+  // No header
   if (!authorization) {
-    res.status(401).json({
+    return res.status(401).json({
       status: false,
       message: "Unauthorized",
     });
   }
 
-  const token = authorization?.replace("Bearer ", "");
+  // Not Bearer format
+  if (!authorization.startsWith("Bearer ")) {
+    return res.status(401).json({
+      status: false,
+      message: "Unauthorized",
+    });
+  }
+
+  const token = authorization.slice(7);
+
   jwt.verify(token, JWT_SECRET, (err, data) => {
     if (err) {
-      res.status(403).json({
+      return res.status(403).json({
         status: false,
         message: "Invalid token",
       });
-    } else {
-      req.user = data?.id;
-      next();
     }
+
+    req.user = data?.id;
+    return next();
   });
 };
