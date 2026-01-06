@@ -2,25 +2,16 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const JWT_SECRET = process.env.JWT_SECRET;
-  const authorization = req.headers.authorization;
+  const auth = req.headers.authorization;
 
-  // No header
-  if (!authorization) {
+  if (!auth) {
     return res.status(401).json({
       status: false,
       message: "Unauthorized",
     });
   }
 
-  // Not Bearer format
-  if (!authorization.startsWith("Bearer ")) {
-    return res.status(401).json({
-      status: false,
-      message: "Unauthorized",
-    });
-  }
-
-  const token = authorization.slice(7);
+  const token = auth.replace("Bearer ", "");
 
   jwt.verify(token, JWT_SECRET, (err, data) => {
     if (err) {

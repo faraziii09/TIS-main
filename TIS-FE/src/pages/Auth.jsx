@@ -20,11 +20,13 @@ const Auth = () => {
 
     try {
       setBtnLoading(true);
-      const response = await axios.post("/login", {
-  username: formValues.username,
-  password: formValues.password,
-});
-
+      const response = await axios.post(
+        "/login",
+        JSON.stringify({
+          username: formValues?.username,
+          password: formValues?.password,
+        })
+      );
 
       if (response.data?.status) {
         const token = response.data?.token;
